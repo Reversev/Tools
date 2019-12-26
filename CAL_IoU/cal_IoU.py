@@ -49,18 +49,11 @@ def cal_IoU(rect_real, rect_detect):
             print('shapely.geos.TopologicalError occured, iou set to 0')
             return 0
 
-
 def multi_array2array(line):
 
-    a = np.array(line).reshape(4, 2)  # 四边形二维坐标表示
-    # print(len(a))
-    b = []
-    for j in range(0, len(a)):
-        # print(a[j])
-        b.append(float(a[j][0]))
-        b.append(float(a[j][1]))
-    # print(b)
-    line[:] = b
+    import operator
+    from functools import reduce
+
+    line[:] = reduce(operator.add, line)
 
     return line
-
