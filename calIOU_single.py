@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 # Author = 'IReverser'
-
-
 import os
 import sys
 import json
@@ -13,9 +11,11 @@ import cv2
 import numpy as np
 from random import choice
 import math
-
 import shapely
 from shapely.geometry import Polygon, MultiPoint  # 多边形
+
+import operator
+from functools import reduce
 
 source_path = 'H:\\data\\train_single\\'
 
@@ -51,15 +51,8 @@ for name in enumerate(file_name(source_path)):
             # print(find_labeling)
             line1 = find_labeling['points']   # 四边形四个点坐标的一维数组表示，[x,y,x,y....]
             # print(find_labeling['points'])
-            a = np.array(line1).reshape(4, 2)  # 四边形二维坐标表示
-            # print(len(a))
-            b = []
-            for j in range(0, len(a)):
-                # print(a[j])
-                b.append(float(a[j][0]))
-                b.append(float(a[j][1]))
-            # print(b)
-            line1[:] = b
+
+            line1[:] = reduce(operator.add, line1)
             print(line1)
             poly1 = Polygon(a).convex_hull  # python四边形对象，会自动计算四个点，最后四个点顺序为：左上 左下  右下 右上 左上
             # print(Polygon(a).convex_hull)  # 可以打印看看是不是这样子
