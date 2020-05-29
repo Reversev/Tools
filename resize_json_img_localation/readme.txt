@@ -1,0 +1,3 @@
+This is an application to expand the image to the specified size, mainly to build a black image that meets the size requirements (such as 1280 * 1024), and attach an image (located under the imgs folder) to the specified location (located in the new_jpg folder Below), and change the coordinate format of the json file (located under the new_json folder).
+
+这是一个把图像扩大到指定尺寸的应用，主要是先构建一个符合尺寸要求（如1280*1024）的黑色图像，将某一个图像（位于imgs文件夹下）附到指定位置（位于new_jpg文件夹下），并改变json文件的坐标格式（位于new_json文件夹下）。
